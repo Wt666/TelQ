@@ -9,9 +9,9 @@ import sys
 
 url_base = {
     # "my_test_company": "https://172.22.223.192:1815/dave/io",  # STG的公司内网访问地址
-    "my_prod_company": "https://172.22.223.96:1815/dave/io",  # prod的公司内网访问地址
+    # "my_prod_company": "https://172.22.223.96:1815/dave/io",  # prod的公司内网访问地址
     # "my_prod_company": "https://192.168.11.68:1815/dave/io",  # prod的公司服务器内网访问地址
-    # "my_prod_company": "https://cloudsms-new.jegotrip.com.cn:1815/dave/io",  # API外部访问地址
+    "my_prod_company": "https://cloudsms-new.jegotrip.com.cn:1815/dave/io",  # API外部访问地址
 }
 url = url_base["my_prod_company"]
 
@@ -107,6 +107,7 @@ def send_sms(sms_content, original_addr, dest_msisdn, country_code, route_id, au
         rspFlag, rsp = post_data(data)
         if rspFlag:
             rsp_json = rsp.json()
+            # print(rsp_json)
             code = rsp_json["RESULT_CODE"]
             desc = rsp_json["RESULT_DESC"]
             if code == 1:
